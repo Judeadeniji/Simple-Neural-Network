@@ -193,6 +193,15 @@ class Matrix {
     const colsA = A[0].length;
     const colsB = B[0].length;
 
+    if (colsA !== B.length) {
+      Matrix.error(
+        `Can not multiply this two matrices. the object: ${JSON.stringify([
+          rowsA,
+          colsA,
+        ])} multiplied by: ${JSON.stringify([B.length, colsB])}`
+      );
+    }
+
     const result: number[][] = Array.from({ length: rowsA }, () =>
       Array(colsB).fill(0)
     );
